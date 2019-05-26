@@ -40,6 +40,9 @@ class InterfaceController: WKInterfaceController {
     
     @IBOutlet weak var table: WKInterfaceTable!
     
+    @IBOutlet weak var wrapperGroup: WKInterfaceGroup!
+    @IBOutlet weak var loadingImage: WKInterfaceImage!
+    
     lazy var dataSource: WeatherDataSource = {
         let measurementSystem = UserDefaults.standard.string(forKey: "measurementSystem") ?? "Metric"
         if measurementSystem == "Metric" {
@@ -50,7 +53,18 @@ class InterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        updateAllForecasts()
+        
+        self.wrapperGroup.setHidden(true)
+        loadingImage.startAnimating()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.animate(withDuration: 0.5, animations: { [weak self] in
+                self?.wrapperGroup.setHidden(false)
+                self?.loadingImage.setAlpha(0)
+                self?.loadingImage.setHeight(0)
+                self?.updateAllForecasts()
+            })
+        }
     }
     
     func updateAllForecasts() {

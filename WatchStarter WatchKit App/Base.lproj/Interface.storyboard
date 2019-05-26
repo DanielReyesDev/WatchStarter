@@ -14,95 +14,100 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchStarter_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group width="1" alignment="left" spacing="8" id="Qzv-61-EhP">
+                        <imageView alignment="center" image="weather" initiallyAnimated="NO" animationDuration="1" id="BwQ-57-Mo4"/>
+                        <group width="1" alignment="left" layout="vertical" id="VK9-Vt-dPg" userLabel="Container">
                             <items>
-                                <label alignment="center" verticalAlignment="center" text="70º" id="uqk-HW-INJ">
-                                    <fontDescription key="font" type="system" weight="medium" pointSize="34"/>
-                                    <variation key="device=watch38mm">
-                                        <fontDescription key="font" type="system" weight="medium" pointSize="28"/>
-                                    </variation>
-                                </label>
-                                <group alignment="center" layout="vertical" id="E62-oP-p5r">
+                                <group width="1" alignment="left" spacing="8" id="Qzv-61-EhP">
                                     <items>
-                                        <label alignment="left" text="Feels like 72" id="4AT-5R-DeT">
-                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                        <label alignment="center" verticalAlignment="center" text="70º" id="uqk-HW-INJ">
+                                            <fontDescription key="font" type="system" weight="medium" pointSize="34"/>
+                                            <variation key="device=watch38mm">
+                                                <fontDescription key="font" type="system" weight="medium" pointSize="28"/>
+                                            </variation>
                                         </label>
-                                        <label alignment="left" text="2 MPH NE" id="gs5-Vt-cCt">
-                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
-                                        </label>
+                                        <group alignment="center" layout="vertical" id="E62-oP-p5r">
+                                            <items>
+                                                <label alignment="left" text="Feels like 72" id="4AT-5R-DeT">
+                                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                                </label>
+                                                <label alignment="left" text="2 MPH NE" id="gs5-Vt-cCt">
+                                                    <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                                </label>
+                                            </items>
+                                        </group>
                                     </items>
                                 </group>
-                            </items>
-                        </group>
-                        <imageView alignment="center" image="Cloudy" id="HCB-Mf-x13"/>
-                        <separator alignment="left" id="OCD-wF-lR0">
-                            <color key="color" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="0.59529298448831602" colorSpace="custom" customColorSpace="sRGB"/>
-                        </separator>
-                        <group width="1" alignment="left" id="YRV-e9-2L3">
-                            <items>
-                                <button width="0.33000000000000002" alignment="left" title="Mon 24º" id="3T0-i8-gcj">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <connections>
-                                        <action selector="showForecast1" destination="AgC-eL-Hgc" id="3L2-0X-Sbb"/>
-                                    </connections>
-                                </button>
-                                <button width="0.33000000000000002" alignment="left" title="Tue 25º" id="df1-0H-YQp">
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <connections>
-                                        <action selector="showForecast2" destination="AgC-eL-Hgc" id="1B4-qn-CWO"/>
-                                    </connections>
-                                </button>
-                                <button width="0.33000000000000002" alignment="left" title="Wed 26º" id="kcM-jc-sye">
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <connections>
-                                        <action selector="showForecast3" destination="AgC-eL-Hgc" id="ntc-fc-MS4"/>
-                                    </connections>
-                                </button>
-                            </items>
-                        </group>
-                        <separator alignment="left" id="vM1-Cx-O8q">
-                            <color key="color" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="0.59529298448831602" colorSpace="custom" customColorSpace="sRGB"/>
-                        </separator>
-                        <table alignment="left" id="hbA-YQ-XIQ">
-                            <items>
-                                <tableRow identifier="ForecastRow" id="zeq-YK-5eC" customClass="ForecastRowController" customModule="WatchStarter_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="GjR-k0-HC6">
-                                        <items>
-                                            <group width="1" widthAdjustment="-32" alignment="left" id="BJM-9a-DGA">
+                                <imageView alignment="center" image="Cloudy" id="HCB-Mf-x13"/>
+                                <separator alignment="left" id="OCD-wF-lR0">
+                                    <color key="color" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="0.59529298448831602" colorSpace="custom" customColorSpace="sRGB"/>
+                                </separator>
+                                <group width="1" alignment="left" id="YRV-e9-2L3">
+                                    <items>
+                                        <button width="0.33000000000000002" alignment="left" title="Mon 24º" id="3T0-i8-gcj">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="showForecast1" destination="AgC-eL-Hgc" id="3L2-0X-Sbb"/>
+                                            </connections>
+                                        </button>
+                                        <button width="0.33000000000000002" alignment="left" title="Tue 25º" id="df1-0H-YQp">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="showForecast2" destination="AgC-eL-Hgc" id="1B4-qn-CWO"/>
+                                            </connections>
+                                        </button>
+                                        <button width="0.33000000000000002" alignment="left" title="Wed 26º" id="kcM-jc-sye">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="showForecast3" destination="AgC-eL-Hgc" id="ntc-fc-MS4"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                                <separator alignment="left" id="vM1-Cx-O8q">
+                                    <color key="color" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="0.59529298448831602" colorSpace="custom" customColorSpace="sRGB"/>
+                                </separator>
+                                <table alignment="left" id="hbA-YQ-XIQ">
+                                    <items>
+                                        <tableRow identifier="ForecastRow" id="zeq-YK-5eC" customClass="ForecastRowController" customModule="WatchStarter_WatchKit_Extension">
+                                            <group key="rootItem" width="1" height="0.0" alignment="left" id="GjR-k0-HC6">
                                                 <items>
-                                                    <group width="1" alignment="left" layout="vertical" id="RbV-hr-xyd">
+                                                    <group width="1" widthAdjustment="-32" alignment="left" id="BJM-9a-DGA">
                                                         <items>
-                                                            <group width="1" alignment="left" id="97I-8B-4Ar">
+                                                            <group width="1" alignment="left" layout="vertical" id="RbV-hr-xyd">
                                                                 <items>
-                                                                    <label alignment="left" text="Mon" id="bA9-a2-I9P">
-                                                                        <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
-                                                                    </label>
-                                                                    <label alignment="right" text="72º" id="WJj-RM-66z">
+                                                                    <group width="1" alignment="left" id="97I-8B-4Ar">
+                                                                        <items>
+                                                                            <label alignment="left" text="Mon" id="bA9-a2-I9P">
+                                                                                <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                                                            </label>
+                                                                            <label alignment="right" text="72º" id="WJj-RM-66z">
+                                                                                <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                                                            </label>
+                                                                        </items>
+                                                                    </group>
+                                                                    <label alignment="left" text="Sunny" id="vat-vA-MzL">
                                                                         <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
                                                                     </label>
                                                                 </items>
                                                             </group>
-                                                            <label alignment="left" text="Sunny" id="vat-vA-MzL">
-                                                                <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
-                                                            </label>
                                                         </items>
                                                     </group>
+                                                    <imageView width="29" height="29" alignment="right" verticalAlignment="center" image="Sunny" id="gCu-pp-cRz"/>
                                                 </items>
                                             </group>
-                                            <imageView width="29" height="29" alignment="right" verticalAlignment="center" image="Sunny" id="gCu-pp-cRz"/>
-                                        </items>
-                                    </group>
-                                    <connections>
-                                        <outlet property="conditionsImage" destination="gCu-pp-cRz" id="rAy-Gg-QIO"/>
-                                        <outlet property="conditionsLabel" destination="vat-vA-MzL" id="u0J-u7-kKB"/>
-                                        <outlet property="dayLabel" destination="bA9-a2-I9P" id="Pof-pE-vMX"/>
-                                        <outlet property="temperatureLabel" destination="WJj-RM-66z" id="hSc-mD-Own"/>
-                                        <segue destination="60I-Ve-19E" kind="push" identifier="WeatherDetailsSegue" id="nyO-eQ-3sm"/>
-                                    </connections>
-                                </tableRow>
+                                            <connections>
+                                                <outlet property="conditionsImage" destination="gCu-pp-cRz" id="rAy-Gg-QIO"/>
+                                                <outlet property="conditionsLabel" destination="vat-vA-MzL" id="u0J-u7-kKB"/>
+                                                <outlet property="dayLabel" destination="bA9-a2-I9P" id="Pof-pE-vMX"/>
+                                                <outlet property="temperatureLabel" destination="WJj-RM-66z" id="hSc-mD-Own"/>
+                                                <segue destination="60I-Ve-19E" kind="push" identifier="WeatherDetailsSegue" id="nyO-eQ-3sm"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
                             </items>
-                        </table>
+                        </group>
                     </items>
                     <menu key="menu" id="MuH-PM-MFw">
                         <items>
@@ -124,45 +129,16 @@
                         <outlet property="forecast1Button" destination="3T0-i8-gcj" id="eBw-ns-aS2"/>
                         <outlet property="forecast2Button" destination="df1-0H-YQp" id="YN3-pd-XaS"/>
                         <outlet property="forecast3Button" destination="kcM-jc-sye" id="eJu-g2-T72"/>
+                        <outlet property="loadingImage" destination="BwQ-57-Mo4" id="sBv-SA-t0h"/>
                         <outlet property="shortTermForecastGroup" destination="YRV-e9-2L3" id="NtN-gE-Kye"/>
                         <outlet property="table" destination="hbA-YQ-XIQ" id="L1q-c3-uBI"/>
                         <outlet property="temperatureLabel" destination="uqk-HW-INJ" id="8Dv-nU-eAZ"/>
                         <outlet property="windSpeedLabel" destination="gs5-Vt-cCt" id="ST7-6v-dbg"/>
+                        <outlet property="wrapperGroup" destination="VK9-Vt-dPg" id="0qT-xX-rWa"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
-        </scene>
-        <!--Static Notification Interface Controller-->
-        <scene sceneID="AEw-b0-oYE">
-            <objects>
-                <notificationController id="YCC-NB-fut">
-                    <items>
-                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
-                    </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
-                    <connections>
-                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
-                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
-                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
-                    </connections>
-                </notificationController>
-            </objects>
-            <point key="canvasLocation" x="319" y="1490"/>
-        </scene>
-        <!--Notification Controller-->
-        <scene sceneID="ZPc-GJ-vnh">
-            <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="WatchStarter_WatchKit_App" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="567" y="1490"/>
-        </scene>
-        <!--Notification Controller-->
-        <scene sceneID="Niz-AI-uX2">
-            <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="WatchStarter_WatchKit_App" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="567" y="1196"/>
         </scene>
         <!--WeatherDetailsInterface-->
         <scene sceneID="cIw-Wf-VKQ">
