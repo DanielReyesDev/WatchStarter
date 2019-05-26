@@ -40,34 +40,25 @@
                         </separator>
                         <group width="1" alignment="left" id="YRV-e9-2L3">
                             <items>
-                                <group width="0.33000000000000002" alignment="left" id="Iv5-QC-lWG">
-                                    <items>
-                                        <button width="1" alignment="left" title="Mon 24º" id="3T0-i8-gcj">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <connections>
-                                                <action selector="showForecast1" destination="AgC-eL-Hgc" id="3L2-0X-Sbb"/>
-                                            </connections>
-                                        </button>
-                                    </items>
-                                </group>
-                                <group width="0.33000000000000002" alignment="left" id="Wcc-ch-cFO">
-                                    <items>
-                                        <button width="1" alignment="left" title="Tue 25º" id="df1-0H-YQp">
-                                            <connections>
-                                                <action selector="showForecast2" destination="AgC-eL-Hgc" id="1B4-qn-CWO"/>
-                                            </connections>
-                                        </button>
-                                    </items>
-                                </group>
-                                <group width="0.33000000000000002" alignment="left" id="7vC-T3-xPa">
-                                    <items>
-                                        <button width="1" alignment="left" title="Wed 26º" id="kcM-jc-sye">
-                                            <connections>
-                                                <action selector="showForecast3" destination="AgC-eL-Hgc" id="ntc-fc-MS4"/>
-                                            </connections>
-                                        </button>
-                                    </items>
-                                </group>
+                                <button width="0.33000000000000002" alignment="left" title="Mon 24º" id="3T0-i8-gcj">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <connections>
+                                        <action selector="showForecast1" destination="AgC-eL-Hgc" id="3L2-0X-Sbb"/>
+                                    </connections>
+                                </button>
+                                <button width="0.33000000000000002" alignment="left" title="Tue 25º" id="df1-0H-YQp">
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <connections>
+                                        <action selector="showForecast2" destination="AgC-eL-Hgc" id="1B4-qn-CWO"/>
+                                    </connections>
+                                </button>
+                                <button width="0.33000000000000002" alignment="left" title="Wed 26º" id="kcM-jc-sye">
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <connections>
+                                        <action selector="showForecast3" destination="AgC-eL-Hgc" id="ntc-fc-MS4"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                         <separator alignment="left" id="vM1-Cx-O8q">
@@ -133,6 +124,7 @@
                         <outlet property="forecast1Button" destination="3T0-i8-gcj" id="eBw-ns-aS2"/>
                         <outlet property="forecast2Button" destination="df1-0H-YQp" id="YN3-pd-XaS"/>
                         <outlet property="forecast3Button" destination="kcM-jc-sye" id="eJu-g2-T72"/>
+                        <outlet property="shortTermForecastGroup" destination="YRV-e9-2L3" id="NtN-gE-Kye"/>
                         <outlet property="table" destination="hbA-YQ-XIQ" id="L1q-c3-uBI"/>
                         <outlet property="temperatureLabel" destination="uqk-HW-INJ" id="8Dv-nU-eAZ"/>
                         <outlet property="windSpeedLabel" destination="gs5-Vt-cCt" id="ST7-6v-dbg"/>

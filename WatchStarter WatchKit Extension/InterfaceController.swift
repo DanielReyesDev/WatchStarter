@@ -23,6 +23,7 @@
 
 import WatchKit
 import Foundation
+import CoreGraphics
 
 
 class InterfaceController: WKInterfaceController {
@@ -32,6 +33,7 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet weak var windSpeedLabel: WKInterfaceLabel!
     @IBOutlet weak var conditionsImage: WKInterfaceImage!
     
+    @IBOutlet weak var shortTermForecastGroup: WKInterfaceGroup!
     @IBOutlet weak var forecast1Button: WKInterfaceButton!
     @IBOutlet weak var forecast2Button: WKInterfaceButton!
     @IBOutlet weak var forecast3Button: WKInterfaceButton!
@@ -55,6 +57,7 @@ class InterfaceController: WKInterfaceController {
         updateCurrentForecaset()
         updateShortTermForecast()
         updateLongTermForecast()
+        drawShortTermForecastGraph()
     }
     
     // Main section of the WatchApp
@@ -107,6 +110,7 @@ class InterfaceController: WKInterfaceController {
     
     let detailsKey = "WeatherDetailsInterface"
     
+    // To show the modal WKInterfaceController with 3 pages
     func showShortTermForecast(for index: Int) {
         
         let context1: AnyObject = ["dataSource": dataSource, "shortTermForecastIndex": 0] as AnyObject
@@ -118,6 +122,75 @@ class InterfaceController: WKInterfaceController {
                         (name: detailsKey, context: context3)]
         
         presentController(withNamesAndContexts: contexts)
+    }
+    
+    // Drawing with CoreGraphics
+    func drawShortTermForecastGraph() {
+        let temperatures = dataSource.shortTermWeather.map { CGFloat($0.temperature) }
+        let graphicWidth: CGFloat = 312
+        let graphicHeight: CGFloat = 88
+        
+        // Setting up the Canvas for the drawing (fixed size of 42mm Apple Watch)
+        UIGraphicsBeginImageContext(CGSize(width: graphicWidth, height: graphicHeight))
+        
+        // Grabbing the reference of the current contexct
+        let context = UIGraphicsGetCurrentContext()
+        
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        
+        // Drawing...
+//        let path = UIBezierPath()
+//        path.lineWidth = 4
+//        UIColor.green.withAlphaComponent(0.33).setStroke()
+//
+//        path.move(to: CGPoint.init(x: 0, y: temperatures[0]))
+//        path.addLine(to: CGPoint.init(x: graphicWidth/2, y: graphicHeight - temperatures[temperatures.count/2]))
+//        path.addLine(to: CGPoint.init(x: graphicWidth, y: graphicHeight - temperatures[temperatures.count - 1]))
+//
+//        path.stroke()
+        
+        
+        let path = UIBezierPath()
+        path.lineWidth = 4
+        UIColor.green.withAlphaComponent(0.33).setStroke()
+        
+        guard let maxTemperature = temperatures.max(),
+              let minTemperature = temperatures.min() else {
+            return
+        }
+        let temperatureSpread = maxTemperature - minTemperature
+        
+        func xCoordinateForIndex(index: Int) -> CGFloat {
+            return graphicWidth * CGFloat(index) / CGFloat(temperatures.count - 1)
+        }
+        func yCoordinateForTemperature(temperature: CGFloat) -> CGFloat {
+            return graphicHeight - (graphicHeight * (temperature - minTemperature) / temperatureSpread)
+        }
+        
+        path.move(to: CGPoint(x: 0, y: yCoordinateForTemperature(temperature: temperatures[0])))
+        
+        for (i, temperature) in temperatures.enumerated() {
+            let x: CGFloat = xCoordinateForIndex(index: i)
+            let y: CGFloat = yCoordinateForTemperature(temperature: temperature)
+            
+            print("\(i) (\(x), \(y))")
+            
+            path.addLine(to: CGPoint(x: x, y: y))
+        }
+        
+        path.stroke()
+        // end drawing code
+        
+        // Setting the created image as a backgorund of the Group
+        if let cgImage = context?.makeImage() {
+            let backgroundImage = UIImage(cgImage: cgImage)
+            shortTermForecastGroup.setBackgroundImage(backgroundImage)
+        }
+        
+        
+        
     }
     
     override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
