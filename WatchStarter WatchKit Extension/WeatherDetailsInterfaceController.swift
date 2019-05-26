@@ -43,21 +43,36 @@ class WeatherDetailsInterfaceController: WKInterfaceController {
             return
         }
         
-        if let index = context["longTermForecastIndex"] as? Int {
-            let weather = dataSource.longTermWeather[index]
+    
+        if let index = context["shortTermForecastIndex"] as? Int {
+            let weather = dataSource.shortTermWeather[index]
+            intervalLabel.setText(weather.intervalString)
+            self.updateCurrentForecast(for: weather)
             
-            setTitle(weather.intervalString)
-            
-            intervalLabel.setHidden(true)
-            temperatureLabel.setText(weather.temperatureString)
-            conditionLabel.setText(weather.weatherConditionString)
-            conditionImage.setImageNamed(weather.weatherConditionImageName)
-            feelsLikeLabel.setText(weather.feelTemperatureString)
-            windLabel.setText(weather.windString)
-            highTemperatureLabel.setText(weather.highTemperatureString)
-            lowTemperatureLabel.setText(weather.lowTemperatureString)
+            if let active = context["active"] as? Bool, active == true {
+                becomeCurrentPage()
+            }
         }
         
+
+        
+        if let index = context["longTermForecastIndex"] as? Int {
+            let weather = dataSource.longTermWeather[index]
+            setTitle(weather.intervalString)
+            self.updateCurrentForecast(for: weather)
+            
+            intervalLabel.setHidden(true)
+        }
+    }
+    
+    func updateCurrentForecast(for weather: WeatherData) {
+        temperatureLabel.setText(weather.temperatureString)
+        conditionLabel.setText(weather.weatherConditionString)
+        conditionImage.setImageNamed(weather.weatherConditionImageName)
+        feelsLikeLabel.setText(weather.feelTemperatureString)
+        windLabel.setText(weather.windString)
+        highTemperatureLabel.setText(weather.highTemperatureString)
+        lowTemperatureLabel.setText(weather.lowTemperatureString)
     }
     
     override func willActivate() {

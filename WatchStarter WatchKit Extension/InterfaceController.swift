@@ -32,9 +32,9 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet weak var windSpeedLabel: WKInterfaceLabel!
     @IBOutlet weak var conditionsImage: WKInterfaceImage!
     
-    @IBOutlet weak var forecast1Label: WKInterfaceLabel!
-    @IBOutlet weak var forecast2Label: WKInterfaceLabel!
-    @IBOutlet weak var forecast3Label: WKInterfaceLabel!
+    @IBOutlet weak var forecast1Button: WKInterfaceButton!
+    @IBOutlet weak var forecast2Button: WKInterfaceButton!
+    @IBOutlet weak var forecast3Button: WKInterfaceButton!
     
     @IBOutlet weak var table: WKInterfaceTable!
     
@@ -68,13 +68,13 @@ class InterfaceController: WKInterfaceController {
     
     // 3-Segmented section of the WatchApp
     func updateShortTermForecast() {
-        let labels = [forecast1Label, forecast2Label, forecast3Label]
+        let labels = [forecast1Button, forecast2Button, forecast3Button]
         let weatherData = [dataSource.shortTermWeather[0], dataSource.shortTermWeather[dataSource.shortTermWeather.count/2], dataSource.shortTermWeather[dataSource.shortTermWeather.count-1]]
         
         for i in 0...2 {
-            let label = labels[i]
+            let button = labels[i]
             let weather = weatherData[i]
-            label?.setText("\(weather.intervalString)\n\(weather.temperatureString)")
+            button?.setTitle("\(weather.intervalString)\n\(weather.temperatureString)")
         }
         
     }
@@ -93,6 +93,32 @@ class InterfaceController: WKInterfaceController {
         }
     }
     
+    @IBAction func showForecast1() {
+        showShortTermForecast(for: 0)
+    }
+    
+    @IBAction func showForecast2() {
+        showShortTermForecast(for: 1)
+    }
+    
+    @IBAction func showForecast3() {
+        showShortTermForecast(for: 2)
+    }
+    
+    let detailsKey = "WeatherDetailsInterface"
+    
+    func showShortTermForecast(for index: Int) {
+        
+        let context1: AnyObject = ["dataSource": dataSource, "shortTermForecastIndex": 0] as AnyObject
+        let context2: AnyObject = ["dataSource": dataSource, "shortTermForecastIndex": dataSource.shortTermWeather.count/2] as AnyObject
+        let context3: AnyObject = ["dataSource": dataSource, "shortTermForecastIndex": dataSource.shortTermWeather.count - 1]  as AnyObject
+        
+        let contexts = [(name: detailsKey, context: context1),
+                        (name: detailsKey, context: context2),
+                        (name: detailsKey, context: context3)]
+        
+        presentController(withNamesAndContexts: contexts)
+    }
     
     override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
         print("Identifier: \(segueIdentifier)")
